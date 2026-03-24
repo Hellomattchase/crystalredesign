@@ -1,0 +1,167 @@
+{{ 'gallery-with-text.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gallery-with-text.js' | asset_url }}" defer="defer"></script>
+
+<div class="container">
+	<div class="border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}">
+		<div class="gallery-with-text__wrapper" role="list">
+
+			{%- for block in section.blocks -%}
+				<li class="gallery-with-text__card color-inverse {% if block.settings.card_active %}active{% endif %}" {{ block.shopify_attributes }}>
+					<div class="gallery-with-text__media">
+						{%- if block.settings.image != blank -%}
+							<img srcset="{%- if block.settings.image.width >= 165 -%}{{ block.settings.image | img_url: '165x' }} 165w,{%- endif -%}
+                        {%- if block.settings.image.width >= 330 -%}{{ block.settings.image | img_url: '330x' }} 330w,{%- endif -%}
+                        {%- if block.settings.image.width >= 535 -%}{{ block.settings.image | img_url: '535x' }} 535w,{%- endif -%}
+                        {%- if block.settings.image.width >= 720 -%}{{ block.settings.image | img_url: '720x' }} 720w,{%- endif -%}
+                        {%- if block.settings.image.width >= 940 -%}{{ block.settings.image | img_url: '940x' }} 940w,{%- endif -%}
+                        {%- if block.settings.image.width >= 1440 -%}{{ block.settings.image | img_url: '1440x' }} 1440w,{%- endif -%}
+                        {%- if block.settings.image.width >= 1880 -%}{{ block.settings.image | img_url: '1880x' }} 1880w{%- endif -%}"
+									 src="{{ block.settings.image | img_url: '535x' }}"
+									 sizes="(min-width: 1100px){% if section.blocks.size > 1 %}535px{% else %}940px{% endif %}, (min-width: 750px) {% if section.blocks.size > 1 %}calc((100vw - 10rem) / 2){% else %}calc(100vw - 10rem){% endif %}, calc(100vw - 3rem)"
+									 alt="{{ block.settings.title | escape }}"
+									 height="{{ block.settings.image.height }}"
+									 width="{{ block.settings.image.width }}"
+									 loading="lazy"
+									 class="motion-reduce"
+									 style="object-position: {{ block.settings.image.presentation.focal_point }}"
+							>
+						{%- else -%}
+             {% assign index = forloop.index | modulo: 4 | plus: 1 %} 
+              {{ 'collection-' | append: index | placeholder_svg_tag: 'placeholder-svg' }} 
+						{%- endif -%}
+					</div>
+					<h3 class="gallery-with-text__title subtitle">
+						{% if  block.settings.tab_description != blank %}
+							{{ block.settings.tab_description }}
+						{% else %}
+							{{- 'general.card.collection_name' | t -}}
+						{% endif %}
+
+					</h3>
+					<div class="gallery-with-text__info">
+						<div class="gallery-with-text__info-item">
+
+							{% if block.settings.title != blank %}
+								<h2 class="gallery-with-text__info-title mt-0 title--section">{{- block.settings.title | escape -}}</h2>
+							{% endif %}
+
+							{% if block.settings.text != blank %}
+								<div class="gallery-with-text__text">{{- block.settings.text -}}</div>
+							{% endif %}
+
+							<a {% if block.settings.link != blank %} href="{{ block.settings.link }}"{% endif %} class="gallery-with-text__button button button--arrow color-background-1" {% if block.settings.link  == blank %} aria-disabled="true"{% endif %}>
+								<span>{{ block.settings.button_label | escape }}</span> {% render 'icon-button-arrow' %}
+							</a>
+							
+						</div>
+						{% if block.settings.link != blank %}
+							<a {% if block.settings.link != blank %} 
+                href="{{ block.settings.link }}"{% endif %} 
+                class="link link--overlay" 
+                {% if block.settings.link  == blank %} aria-disabled="true"{% endif %}
+                aria-label="{{ 'accessibility.link' | t }}"
+              >
+              </a>
+						{% endif %}
+					</div>
+				</li>
+			{%- endfor -%}
+
+		</div>
+	</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.gallery-with-text.name",
+  "tag": "section",
+  "class": "gallery-with-text-section spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "border_top",
+      "default": false,
+      "label": "t:sections.gallery-with-text.settings.border_top.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_bottom",
+      "default": false,
+      "label": "t:sections.gallery-with-text.settings.border_bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_gallery",
+      "name": "t:sections.gallery-with-text.blocks.featured_gallery.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "tab_description",
+          "default": "Tab description",
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.tab_description.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "t:sections.gallery-with-text.blocks.featured_gallery.settings.title.default",
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.title.label"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>For example, a description for your collection, product or other</p>",
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.text.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.link.label"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "t:sections.gallery-with-text.settings.button_label.label",
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.button_label.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "card_active",
+          "default": false,
+          "label": "t:sections.gallery-with-text.blocks.featured_gallery.settings.card_active.label",
+          "info": "t:sections.gallery-with-text.blocks.featured_gallery.settings.card_active.info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.gallery-with-text.presets.name",
+      "blocks": [
+        {
+          "type": "featured_gallery"
+        },
+        {
+          "type": "featured_gallery"
+        },
+        {
+          "type": "featured_gallery"
+        },
+        {
+          "type": "featured_gallery"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

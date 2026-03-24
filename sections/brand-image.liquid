@@ -1,0 +1,166 @@
+{{ 'section-brand.css' | asset_url | stylesheet_tag }}
+
+
+<div class="brand container">
+	<div class="border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}">
+		<div class="brand__wrapper">
+			<ul class="brand-list row row-cols-1  row-cols-lg-2 row-cols-xl-{{ section.settings.brand_to_show_row }}">
+				{%- for block in section.blocks -%}
+					<li class="brand-list__item {% if section.settings.column_alignment == 'center' %} center{% endif %}" {{ block.shopify_attributes }}>
+						{%- if block.settings.title != blank -%}
+							<h3 class="brand__title h4 subtitle">{{ block.settings.title }}</h3>
+						{%- endif -%}
+						{%- if block.settings.image != blank -%}
+							<div class="brand__image-wrapper {% unless section.settings.image_ratio == "adapt" %}brand__image-wrapper-ratio{% endunless %} brand__image-wrapper--{{ section.settings.image_ratio }}">
+
+								{%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
+								<img
+									srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
+									src="{{ block.settings.image | image_url: width: 400 }}"
+									alt="{{ block.settings.image.alt | escape }}"
+									loading="lazy"
+									width="{{ block.settings.image.width }}"
+									height="{{ block.settings.image.height }}"
+									class="brand__image"
+									style="max-width: min(100%, {{ block.settings.image_width }}px);"
+								>
+							</div>
+						{%- elsif block.settings.image == blank and block.settings.title == blank -%}
+							<div class="brand__image-wrapper">
+								<h3>Brand</h3>
+							</div>
+						{%- endif -%}
+					</li>
+				{%- endfor -%}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.brand-image.name",
+	"class": "spaced-section",
+	"tag": "section",
+	"enabled_on": {
+    "templates": ["*"]
+  },
+	"settings": [
+		{
+			"type": "range",
+			"id": "brand_to_show_row",
+			"min": 2,
+			"max": 6,
+			"step": 2,
+			"default": 6,
+			"label": "t:sections.brand-image.settings.brand_to_show_row.label"
+		},
+		{
+			"type": "select",
+			"id": "image_ratio",
+			"options": [
+				{
+					"value": "adapt",
+					"label": "t:sections.brand-image.settings.image_ratio.options__1.label"
+				},
+				{
+					"value": "landscape",
+					"label": "t:sections.brand-image.settings.image_ratio.options__2.label"
+				},
+				{
+					"value": "portrait",
+					"label": "t:sections.brand-image.settings.image_ratio.options__3.label"
+				},
+				{
+					"value": "square",
+					"label": "t:sections.brand-image.settings.image_ratio.options__4.label"
+				}
+			],
+			"default": "adapt",
+			"label": "t:sections.brand-image.settings.image_ratio.label"
+		},
+		{
+			"type": "select",
+			"id": "column_alignment",
+			"options": [
+				{
+					"value": "left",
+					"label": "t:sections.brand-image.settings.column_alignment.options__1.label"
+				},
+				{
+					"value": "center",
+					"label": "t:sections.brand-image.settings.column_alignment.options__2.label"
+				}
+			],
+			"default": "center",
+			"label": "t:sections.brand-image.settings.column_alignment.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.brand-image.settings.border_top.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_bottom",
+			"default": false,
+			"label": "t:sections.brand-image.settings.border_bottom.label"
+		}
+	],
+	"blocks": [
+		{
+			"type": "column",
+			"name": "t:sections.brand-image.blocks.column.name",
+			"settings": [
+				{
+					"type": "text",
+					"id": "title",
+					"default": "Brands",
+					"label": "t:sections.brand-image.blocks.column.settings.title.label"
+				},
+				{
+					"type": "image_picker",
+					"id": "image",
+					"label": "t:sections.brand-image.blocks.column.settings.image.label"
+				},
+				{
+					"type": "range",
+					"id": "image_width",
+					"min": 50,
+					"max": 300,
+					"step": 5,
+					"unit": "px",
+					"label": "t:sections.brand-image.blocks.column.settings.image_width.label",
+					"default": 140
+				}
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.brand-image.presets.name",
+			"blocks": [
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				},
+				{
+					"type": "column"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

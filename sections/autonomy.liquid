@@ -1,0 +1,218 @@
+{% comment %}
+  Crystal Clear Eco Home — The Autonomous Growth Model
+  A section detailing the company's business model and scaling strategy.
+{% endcomment %}
+
+<section class="eco-section">
+  <div class="eco-section__header">
+    <h2 class="eco-subtitle">The Autonomous Growth Model</h2>
+    <p class="eco-lead">
+      Our journey began with a single mission: to create a fully autonomous, low-overhead business model. By removing unnecessary costs, we are able to provide the cheapest-priced eco cleaning service in your city. The following blueprint explains how we achieve this.
+    </p>
+  </div>
+  <div class="eco-grid eco-grid--3">
+    <article class="eco-card">
+      <h3 class="eco-card__title">Local Domination</h3>
+      <ul class="eco-list">
+        <li><span class="eco-dot"></span><p>Started with a single city, building a strong local brand.</p></li>
+        <li><span class="eco-dot"></span><p>Rapidly expanded to cover the entire county and surrounding areas.</p></li>
+        <li><span class="eco-dot"></span><p>Achieved state-wide saturation in just 6 months.</p></li>
+      </ul>
+    </article>
+
+    <article class="eco-card">
+      <h3 class="eco-card__title">State-to-State Expansion</h3>
+      <ul class="eco-list">
+        <li><span class="eco-dot"></span><p>A new partner joined us in our mission to open in Dallas, Texas.</p></li>
+        <li><span class="eco-dot"></span><p>With our replicable model, we covered half of Texas within two months.</p></li>
+        <li><span class="eco-dot"></span><p>The autonomous, partner-led model proved it could work anywhere.</p></li>
+      </ul>
+    </article>
+
+    <article class="eco-card">
+      <h3 class="eco-card__title">The 50-State Vision</h3>
+      <ul class="eco-list">
+        <li><span class="eco-dot"></span><p>The success of the Texas launch confirmed our belief in the model.</p></li>
+        <li><span class="eco-dot"></span><p>We realized this autonomously operated business model could be replicated across all 50 states.</p></li>
+        <li><span class="eco-dot"></span><p>Our mission is to bring affordable, eco-friendly cleaning to the entire nation.</p></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<style>
+/* Eco Glassmorphism Style */
+@charset "UTF-8";
+
+/* Color custom properties */
+:root {
+  --color-base-background: 186, 192, 149;
+  --color-foreground: #f8f8f8;
+  --color-foreground-title: #f8f8f8;
+  --color-foreground-secondary: #e0e0e0;
+  --color-link: #49633e;
+  --color-button: #49633e;
+  --color-button-text: #fff;
+  --color-badge-background: #49633e;
+  --color-badge-border: #49633e;
+  --color-text-light: #eaf5e3;
+  --color-text-dark: #0d0d0d;
+}
+
+/* Text and section styling */
+.eco-section {
+  background-color: rgba(13, 13, 13, 0.75);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.eco-section:first-child {
+  margin-top: 0;
+}
+
+/* Headings and text colors */
+.eco-title, .eco-subtitle, .eco-card__title, .eco-lead, .eco-list p {
+  color: #f8f8f8;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: none;
+  margin: 0;
+}
+
+.eco-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(28px, 5vw, 48px);
+}
+
+.eco-subtitle {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(22px, 3.5vw, 36px);
+}
+
+.eco-card__title {
+  font-weight: 900;
+  font-size: clamp(18px, 2.5vw, 24px);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.eco-lead {
+  max-width: 900px;
+  margin: 1rem auto 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Badges */
+.eco-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--color-badge-background);
+  color: var(--color-button-text);
+}
+
+/* Grid for cards */
+.eco-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.eco-grid--3 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .eco-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.eco-grid--2 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .eco-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cards (now transparent) */
+.eco-card {
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.eco-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Lists and dots */
+.eco-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  color: #e0e0e0;
+}
+
+.eco-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.eco-list p {
+  margin: 0;
+  color: var(--color-foreground-secondary);
+}
+
+.eco-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f8f8f8;
+  margin-top: 0.5rem;
+  animation: pulse-light 2s ease-out infinite;
+}
+
+@keyframes pulse-light {
+  0% { box-shadow: 0 0 0 0 rgba(248, 248, 248, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(248, 248, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(248, 248, 248, 0); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Autonomy",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "The Autonomous Growth Model"
+    }
+  ]
+}
+{% endschema %}

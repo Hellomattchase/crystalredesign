@@ -1,0 +1,126 @@
+{{ 'section-collapsible-content.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'collapsible-content.js' | asset_url }}" defer="defer"></script>
+
+<div class="collapsible-content">
+	<div class="container {% if section.settings.show_line_separator %}collapsible-content__separator{% endif %}">
+		<div class="border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}">
+			<div class="collapsible-content__top">
+				{%- if section.settings.heading != blank -%}
+					<h2 class="collapsible-content__heading">
+						{{ section.settings.heading }}
+					</h2>
+				{%- endif -%}
+
+				{%- if section.settings.text != blank -%}
+					<div class="collapsible-content__text">
+						{{ section.settings.text | escape }}
+					</div>
+				{%- endif -%}
+			</div>
+
+			<div class="collapsible-content__items">
+				{%- for block in section.blocks -%}
+					<div class="collapsible-content__item {% if forloop.index == 1 %} active{% endif %}" {{ block.shopify_attributes }}>
+						<div class="collapsible-content__toggle">
+							<div class="collapsible-content__toggle-group">
+								<div class="collapsible-content__digit">{{ forloop.index }}</div>
+								{%- if block.settings.question != blank -%}
+									<h4 class="collapsible-content__question">{{ block.settings.question | escape }}</h4>
+								{%- endif -%}
+							</div>
+							<div class="collapsible-content__icon">
+								<svg width="51" height="52" viewBox="0 0 51 52" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M24.8212 29.4787L25.5283 30.1858L26.2354 29.4787L32.3207 23.3934L31.6136 22.6863L25.5283 28.7716L19.4429 22.6863L18.7358 23.3934L24.8212 29.4787Z" fill="currentColor"/>
+									<path d="M25.5283 30.1858L25.1747 30.5394L25.5283 30.8929L25.8818 30.5394L25.5283 30.1858ZM24.8212 29.4787L25.1747 29.1252H25.1747L24.8212 29.4787ZM26.2354 29.4787L26.589 29.8323V29.8323L26.2354 29.4787ZM32.3207 23.3934L32.6743 23.7469L33.0279 23.3934L32.6743 23.0398L32.3207 23.3934ZM31.6136 22.6863L31.9672 22.3327L31.6136 21.9792L31.2601 22.3327L31.6136 22.6863ZM25.5283 28.7716L25.1747 29.1252L25.5283 29.4787L25.8818 29.1252L25.5283 28.7716ZM19.4429 22.6863L19.7965 22.3327L19.4429 21.9792L19.0894 22.3327L19.4429 22.6863ZM18.7358 23.3934L18.3823 23.0398L18.0287 23.3934L18.3823 23.7469L18.7358 23.3934ZM25.8818 29.8323L25.1747 29.1252L24.4676 29.8323L25.1747 30.5394L25.8818 29.8323ZM25.8818 29.1252L25.1747 29.8323L25.8818 30.5394L26.589 29.8323L25.8818 29.1252ZM31.9672 23.0398L25.8818 29.1252L26.589 29.8323L32.6743 23.7469L31.9672 23.0398ZM31.2601 23.0398L31.9672 23.7469L32.6743 23.0398L31.9672 22.3327L31.2601 23.0398ZM25.8818 29.1252L31.9672 23.0398L31.2601 22.3327L25.1747 28.4181L25.8818 29.1252ZM19.0894 23.0398L25.1747 29.1252L25.8818 28.4181L19.7965 22.3327L19.0894 23.0398ZM19.0894 23.7469L19.7965 23.0398L19.0894 22.3327L18.3823 23.0398L19.0894 23.7469ZM25.1747 29.1252L19.0894 23.0398L18.3823 23.7469L24.4676 29.8323L25.1747 29.1252Z" fill="currentColor"/>
+								</svg>
+							</div>
+						</div>
+
+						{%- if block.settings.answer != blank -%}
+							<div class="collapsible-content__answer" {% if forloop.index == 1 %} style="display: block;" {% endif %}>
+								<div class="collapsible-content__answer-inner">{{ block.settings.answer }}</div>
+							</div>
+						{%- endif -%}
+					</div>
+				{%- endfor -%}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.collapsible-content.name",
+	"tag": "section",
+	"class": "collapsible-content-section spaced-section",
+	"enabled_on": {
+		"templates": [
+			"*"
+		]
+	},
+	"blocks": [
+		{
+			"type": "accordion",
+			"name": "t:sections.collapsible-content.blocks.accordion.name",
+			"limit": 20,
+			"settings": [
+				{
+					"type": "text",
+					"id": "question",
+					"default": "t:sections.collapsible-content.blocks.accordion.collapse.heading.default",
+					"label": "t:sections.collapsible-content.blocks.accordion.collapse.heading.label"
+				},
+				{
+					"type": "richtext",
+					"id": "answer",
+					"default": "t:sections.collapsible-content.blocks.accordion.collapse.answer.default",
+					"label": "t:sections.collapsible-content.blocks.accordion.collapse.text.label"
+				}
+			]
+		}
+	],
+	"settings": [
+		{
+			"type": "text",
+			"id": "heading",
+			"default": "t:sections.collapsible-content.settings.heading.default",
+			"label": "t:sections.collapsible-content.settings.heading.label"
+		},
+		{
+			"type": "textarea",
+			"id": "text",
+			"default": "t:sections.collapsible-content.settings.text.default",
+			"label": "t:sections.collapsible-content.settings.text.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_top",
+			"default": false,
+			"label": "t:sections.collapsible-content.settings.border_top.label"
+		},
+		{
+			"type": "checkbox",
+			"id": "border_bottom",
+			"default": false,
+			"label": "t:sections.collapsible-content.settings.border_bottom.label"
+		}
+	],
+	"presets": [
+		{
+			"name": "t:sections.collapsible-content.name",
+			"blocks": [
+				{
+					"type": "accordion"
+				},
+				{
+					"type": "accordion"
+				},
+				{
+					"type": "accordion"
+				}
+			]
+		}
+	]
+}
+{% endschema %}

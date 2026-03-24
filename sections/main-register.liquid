@@ -1,0 +1,135 @@
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+
+<div class='customer register'>
+	<div class='page-header'>
+		<div class='page-header__inner'>
+			<h1 class='title--page'>
+				{{ 'customer.register.title' | t }}
+			</h1>
+		</div>
+	</div>
+
+	{%- form 'create_customer' -%}
+		<div class='field__wrapper'>
+			<div class='field'>
+				<input
+					type='text'
+					dir="ltr"
+					name='customer[first_name]'
+					id='RegisterForm-FirstName'
+					aria-required='true'
+					{% if form.first_name %}
+						value='{{ form.first_name }}'
+					{% endif %}
+					autocomplete='given-name'
+					placeholder='{{ 'customer.register.first_name' | t }}'
+					{% if form.errors contains 'first_name' %}
+						aria-invalid='true'
+						aria-describedby='RegisterForm-first_name-error'
+					{% endif %}
+				>
+				<label for='RegisterForm-FirstName'>
+					{{ 'customer.register.first_name' | t }}
+				</label>
+				{%- if form.errors contains 'first_name' -%}
+					<span id='RegisterForm-first_name-error' class='form__message'>
+						{{ form.errors.translated_fields.first_name | capitalize }}
+						{{ form.errors.messages.first_name }}.
+					</span>
+				{%- endif -%}
+			</div>
+			<div class='field'>
+				<input
+					type='text'
+					dir="ltr"
+					name='customer[last_name]'
+					id='RegisterForm-LastName'
+					aria-required='true'
+					{% if form.last_name %}
+						value='{{ form.last_name }}'
+					{% endif %}
+					autocomplete='family-name'
+					placeholder='{{ 'customer.register.last_name' | t }}'
+					{% if form.errors contains 'last_name' %}
+						aria-invalid='true'
+						aria-describedby='RegisterForm-last_name-error'
+					{% endif %}
+				>
+				<label for='RegisterForm-LastName'>
+					{{ 'customer.register.last_name' | t }}
+				</label>
+				{%- if form.errors contains 'last_name' -%}
+					<span id='RegisterForm-last_name-error' class='form__message'>
+						{{ form.errors.translated_fields.last_name | capitalize }}
+						{{ form.errors.messages.last_name }}.
+					</span>
+				{%- endif -%}
+			</div>
+		</div>
+		<div class='field'>
+			<input
+				type='email'
+				dir="ltr"
+				name='customer[email]'
+				id='RegisterForm-email'
+				{% if form.email %}
+					value='{{ form.email }}'
+				{% endif %}
+				spellcheck='false'
+				autocapitalize='off'
+				autocomplete='email'
+				aria-required='true'
+				{% if form.errors contains 'email' %}
+					aria-invalid='true'
+					aria-describedby='RegisterForm-email-error'
+				{% endif %}
+				placeholder='{{ 'customer.register.email' | t }}'
+			>
+			<label for='RegisterForm-email'>
+				{{ 'customer.register.email' | t }}
+			</label>
+		</div>
+		{%- if form.errors contains 'email' -%}
+			<span id='RegisterForm-email-error' class='form__message'>
+				{{ form.errors.translated_fields.email | capitalize }}
+				{{ form.errors.messages.email }}.
+			</span>
+		{%- endif -%}
+		<div class='field'>
+			<input
+				type='password'
+				dir="ltr"
+				name='customer[password]'
+				id='RegisterForm-password'
+				aria-required='true'
+				{% if form.errors contains 'password' %}
+					aria-invalid='true'
+					aria-describedby='RegisterForm-password-error'
+				{% endif %}
+				placeholder='{{ 'customer.register.password' | t }}'
+			>
+			<label for='RegisterForm-password'>
+				{{ 'customer.register.password' | t }}
+			</label>
+		</div>
+		{%- if form.errors contains 'password' -%}
+			<span id='RegisterForm-password-error' class='form__message'>
+				{{ form.errors.translated_fields.password | capitalize }}
+				{{ form.errors.messages.password }}.
+			</span>
+		{%- endif -%}
+
+		<div class='customer__buttons center'>
+			<button>
+				{{ 'customer.register.submit' | t }}
+			</button>
+		</div>
+	{%- endform -%}
+</div>
+
+{% schema %}
+{
+	"name": "t:sections.main-register.name",
+	"tag": "section"
+}
+{% endschema %}

@@ -1,0 +1,319 @@
+{% comment %}
+  Crystal Clear Eco Home — Franchise Opportunity Page (Dark Inverse Glass)
+  Focuses on passive income, automation, and 8-week launch.
+{% endcomment %}
+
+<div id="franchise-section">
+  <div class="eco-bg" aria-hidden="true">
+    <video class="eco-bg__vid" autoplay muted loop playsinline>
+      <source src="https://cdn.shopify.com/videos/c/o/v/3052a44c69474d55833a481ac34c494a.mp4" type="video/mp4"></video>
+  </div>
+  <div class="eco-overlay" aria-hidden="true"></div>
+
+  <main class="eco-wrap">
+    
+    <!-- HERO SECTION -->
+    <section class="eco-section eco-section--hero">
+      <div class="eco-section__header">
+        <span class="eco-badge">Franchise Investment Opportunity</span>
+        <h1 class="eco-title">Launch Your Passive Income Stream in 8 Weeks.</h1>
+        <p class="eco-lead">
+          Own a Crystal Clear Eco Cleaners franchise—the modern, eco-friendly cleaning franchise built for scalability, sustainability, and passive income. Our fully automated systems, marketing, and support let you focus on growing your business while we handle the rest.
+        </p>
+        <p class="eco-lead" style="font-weight: 600; font-size: clamp(1.1rem, 2.5vw, 1.4rem); margin-top: 1.5rem;">
+          We’ve successfully launched in Scottsdale, Dallas, and San Diego—and due to explosive growth, we're currently securing our Q1 2026 expansion spots. Secure your city now.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHY SECTION -->
+    <section class="eco-section">
+      <h2 class="eco-subtitle">Why Crystal Clear?</h2>
+      <div class="eco-grid eco-grid--2">
+        <article class="eco-card">
+          <h3 class="eco-card__title">The Green Advantage</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>Every clean uses plant-based, non-toxic products—safer for families, pets, and the planet.</p></li>
+            <li><span class="eco-dot"></span><p>We deliver in-demand services people love: eco-friendly carpet cleaning, chemical-free oven care, and more.</p></li>
+          </ul>
+        </article>
+
+        <article class="eco-card">
+          <h3 class="eco-card__title">Impact & Community</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>Every clean plants a tree through our partnership with Plant With Purpose, providing a positive social impact.</p></li>
+            <li><span class="eco-dot"></span><p>Tap into the growing Sustainable Investing (SRI) market by owning a genuinely green business.</p></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+    
+    <!-- WHAT'S INCLUDED SECTION -->
+    <section class="eco-section">
+      <h2 class="eco-subtitle">What’s Included: The Full Automation Stack</h2>
+      <div class="eco-grid eco-grid--2">
+        <article class="eco-card">
+          <h3 class="eco-card__title">Zero-Touch Operations</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>Automated booking site & QuickBooks integration for hands-off accounting.</p></li>
+            <li><span class="eco-dot"></span><p>Low overhead. No inventory requirements. High margin model.</p></li>
+            <li><span class="eco-dot"></span><p>Full onboarding, legal setup, and branded assets ready for launch.</p></li>
+          </ul>
+        </article>
+        
+        <article class="eco-card">
+          <h3 class="eco-card__title">Lead Generation Engine</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>SEO, Google Ads, and social media campaigns handled centrally.</p></li>
+            <li><span class="eco-dot"></span><p>National outreach and local client leads sent directly to your city.</p></li>
+            <li><span class="eco-dot"></span><p>We build the demand; you manage the service. It’s that simple.</p></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- GET STARTED CTA -->
+    <section class="eco-section" style="margin-top: 4rem;">
+      <h2 class="eco-subtitle">Get Started: Claim Your City Now</h2>
+      <p class="eco-lead">
+        Low overhead. No inventory. Every clean plants a tree. Join our growing network of franchise owners making homes cleaner, air fresher, and communities greener.
+      </p>
+      <div class="cta-row" style="margin-top: 30px;">
+        <a class="btn" href="mailto:info@crystalcleareco.com?subject=Franchise%20Inquiry%20Passive%20Income" aria-label="Contact for Franchise Opportunity">Secure Your Franchise Spot</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<style>
+/* Eco Glassmorphism Style */
+@charset "UTF-8";
+
+/* Color custom properties */
+:root {
+  --color-base-background: 186, 192, 149;
+  --color-foreground: #f8f8f8;
+  --color-foreground-title: #f8f8f8;
+  --color-foreground-secondary: #e0e0e0;
+  --color-link: #49633e;
+  --color-button: #49633e;
+  --color-button-text: #fff;
+  --color-badge-background: #49633e;
+  --color-badge-border: #49633e;
+  --color-text-light: #eaf5e3;
+  --color-text-dark: #0d0d0d;
+}
+
+/* Background video */
+#franchise-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(40px, 6vw, 84px) clamp(18px, 5vw, 56px);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--color-base-background); /* Fallback */
+}
+
+.eco-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.eco-bg__vid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* Frosted overlay */
+.eco-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Content wrapper */
+.eco-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Text and section styling */
+.eco-section {
+  background-color: transparent; /* Seamless style */
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.eco-section:first-child {
+  margin-top: 0;
+}
+
+/* Headings and text colors */
+.eco-title, .eco-subtitle, .eco-card__title, .eco-lead, .eco-list p {
+  color: #0d0d0d;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: none;
+  margin: 0;
+}
+
+.eco-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(28px, 5vw, 48px);
+}
+
+.eco-subtitle {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(22px, 3.5vw, 36px);
+}
+
+.eco-card__title {
+  font-weight: 900;
+  font-size: clamp(18px, 2.5vw, 24px);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.eco-lead {
+  max-width: 900px;
+  margin: 1rem auto 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Badges */
+.eco-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--color-badge-background);
+  color: var(--color-button-text);
+}
+
+/* Grid for cards */
+.eco-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.eco-grid--2 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .eco-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cards (now transparent) */
+.eco-card {
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+/* Lists and dots */
+.eco-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  color: var(--color-foreground-secondary);
+}
+
+.eco-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.eco-list p {
+  margin: 0;
+  color: #0d0d0d;
+}
+
+.eco-dot {
+  width: 8px;
+  height: 8px;
+  color: #0d0d0d;
+  border-radius: 50%;
+  background-color: var(--color-foreground);
+  margin-top: 0.5rem;
+  animation: pulse-light 2s ease-out infinite;
+}
+
+@keyframes pulse-light {
+  0% { box-shadow: 0 0 0 0 rgba(248, 248, 248, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(248, 248, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(248, 248, 248, 0); }
+}
+
+/* Buttons (CTA Style) */
+.cta-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  font-family: ui-sans-serif, system-ui;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  text-decoration: none;
+  border-radius: 999px;
+  background: var(--color-badge-background);
+  color: var(--color-button-text);
+  border: 1px solid transparent;
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 6px 16px rgba(var(--color-base-background), 0.5);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(var(--color-base-background), 0.6);
+}
+</style>
+
+{% schema %}
+{
+  "name": "Franchise Opportunity",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Franchise Opportunity"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,197 @@
+{{ 'product-image-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'component-round-stamp.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'image-collage.js' | asset_url }}" defer="defer"></script>
+
+<div class="container">
+	<div class="border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}">
+		<div class="product-image-with-text {% if section.blocks != blank %} product-image-with-text--image {% endif %}">
+			<div class="product-image-with-text__item">
+				{%- if section.settings.sub_title != blank -%}
+					<div class="subtitle">{{ section.settings.sub_title | escape }}</div>
+				{% endif %}
+
+				{%- if section.settings.text != blank -%}
+					<div class="product-image-with-text__text">{{ section.settings.text | escape }}</div>
+				{% endif %}
+
+				<div class="product-image-with-text__meta">
+					{%- if section.settings.image_author != blank -%}
+						<figure class="product-image-with-text__photo">
+							<img
+									srcset="{%- if section.settings.image_author.width >= 50 -%}{{ section.settings.image_author | img_url: '50x' }} 50w,{%- endif -%}
+								{%- if section.settings.image_author.width >= 100 -%}{{ section.settings.image_author | img_url: '100x' }} 100w,{%- endif -%}
+								{{ section.settings.image_author | img_url: 'master' }} {{ section.settings.image_author.width }}w"
+									src="{{ section.settings.image_author | img_url: '50x' }}"
+									loading="lazy"
+									alt="{{ section.settings.image_author.alt | escape }}"
+									width="{{ section.settings.image_author.width }}"
+									height="{{ section.settings.image_author.width | divided_by: section.settings.image_author.aspect_ratio }}"
+							>
+						</figure>
+					{%- endif -%}
+
+					{%- if section.settings.name_author != blank or section.settings.position_author != blank -%}
+						<div class="product-image-with-text__info">
+							{%- if section.settings.name_author != blank -%}
+								<span class="product-image-with-text__name">{{ section.settings.name_author | escape }}</span>
+							{% endif %}
+
+							{%- if section.settings.position_author != blank -%}
+								<span class="product-image-with-text__position">{{ section.settings.position_author | escape }}</span>
+							{% endif %}
+						</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="product-image-with-text__images">
+				<div class="product-image-with-text__images-item">
+					{%- for block in section.blocks -%}
+						<div class="product-image-with-text__image">
+							{%- if block.settings.image != blank -%}
+								{%- assign image_size = block.settings.image_width | append: 'x' -%}
+								<img srcset="{{ block.settings.image | img_url: image_size }} 1x, {{ block.settings.image | img_url: image_size, scale: 2 }} 2x"
+										 src="{{ block.settings.image | img_url: image_size }}"
+										 alt="{{ block.settings.image.alt | escape }}"
+										 width="{{ block.settings.image.width }}"
+										 height="{{ block.settings.image.height }}"
+								>
+								{% if block.settings.round_stamp %}
+									<div class="round-stamp" style="width:{{ block.settings.round_stamp_width }}px; height:{{ block.settings.round_stamp_width }}px; bottom: {{ block.settings.round_stamp_width  | divided_by: 2 | times: -1}}px; right: {{ block.settings.round_stamp_width  | divided_by: 2 | times: -1}}px;">
+										<svg class="round-stamp-animate" xmlns="//www.w3.org/2000/svg" xmlns:xlink="//www.w3.org/1999/xlink" viewBox="0 0 500 500">
+											<defs>
+												<path id="textcircle" d="
+											M 100, 250
+											a 150,150 0 1,1 300,0
+											a 150,150 0 1,1 -300,0
+										"/>
+
+											</defs>
+											<text dy="0" dx="0" style="font-size: {{ block.settings.round_stamp_size }}px;  letter-spacing: {{ block.settings.round_stamp_letter_spacing }}px;">
+												<textPath xlink:href="#textcircle">
+													{{ block.settings.round_stamp_text }}
+												</textPath>
+											</text>
+										</svg>
+									</div>
+								{%- endif -%}
+							{%- endif -%}
+						</div>
+					{%- endfor -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% schema %}
+{
+  "name": "t:sections.product-image-with-text.name",
+  "tag": "section",
+  "class": "product-image-with-text-section spaced-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "sub_title",
+      "default": "t:sections.product-image-with-text.settings.sub_title.default",
+      "label": "t:sections.product-image-with-text.settings.sub_title.label"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "default": "t:sections.product-image-with-text.settings.text.default",
+      "label": "t:sections.product-image-with-text.settings.text.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.product-image-with-text.settings.header.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_author",
+      "label": "t:sections.product-image-with-text.settings.image_author.label"
+    },
+    {
+      "type": "text",
+      "id": "name_author",
+      "default": "t:sections.product-image-with-text.settings.name_author.default",
+      "label": "t:sections.product-image-with-text.settings.name_author.label"
+    },
+    {
+      "type": "text",
+      "id": "position_author",
+      "default": "t:sections.product-image-with-text.settings.position_author.default",
+      "label": "t:sections.product-image-with-text.settings.position_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_top",
+      "default": true,
+      "label": "t:sections.product-image-with-text.settings.border_top.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_bottom",
+      "default": false,
+      "label": "t:sections.product-image-with-text.settings.border_bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product_image_with_text",
+      "name": "t:sections.product-image-with-text.blocks.product_image_with_text.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.image.label"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 300,
+          "step": 10,
+          "default": 300,
+          "unit": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.image_width.unit",
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.image_width.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "round_stamp",
+          "default": false,
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp.label"
+        },
+        {
+          "type": "text",
+          "id": "round_stamp_text",
+          "default": "stockholm ~ stockholm ~",
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp_text.label"
+        },
+        {
+          "type": "number",
+          "id": "round_stamp_width",
+          "default": 140,
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp_width.label",
+          "info": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp_width.info"
+        },
+        {
+          "type": "number",
+          "id": "round_stamp_size",
+          "default": 50,
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp_size.label",
+          "info": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp_size.info"
+        },
+        {
+          "type": "number",
+          "id": "round_stamp_letter_spacing",
+          "default": 8,
+          "label": "t:sections.product-image-with-text.blocks.product_image_with_text.settings.round_stamp_letter_spacing.label"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

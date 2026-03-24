@@ -1,0 +1,108 @@
+.newsletter--narrow .newsletter__wrapper,
+.newsletter:not(.newsletter--narrow) .newsletter__wrapper.color-background-1 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+.newsletter__wrapper {
+  position: relative;
+  padding: 4rem 2rem;
+  overflow-x: hidden;
+}
+
+.newsletter__wrapper--image {
+  padding: 4rem 2rem 13rem 2rem;
+}
+
+@media screen and (min-width: 990px) {
+  .newsletter__wrapper {
+    padding: 8rem;
+  }
+  .newsletter__wrapper--image {
+    padding: 8rem 8rem 25rem 8rem;
+  }
+}
+.newsletter__subheading {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: rgb(var(--color-foreground-secondary));
+}
+
+.newsletter-form__field-wrapper .newsletter-form__message {
+  margin-top: 1.5rem;
+}
+
+.newsletter__button {
+  flex-shrink: 0;
+  margin: 0 1rem 0 1rem;
+}
+
+.newsletter__item {
+  display: grid;
+  gap: 3rem;
+  max-width: 854px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 990px) {
+  .newsletter__item {
+    grid-template-columns: 400px 1fr;
+    gap: 4rem;
+  }
+}
+.newsletter-form__field-wrapper .field__input {
+  height: 6rem;
+  box-shadow: none;
+}
+
+.newsletter-form__field-wrapper .field__label {
+  top: 2.2rem;
+}
+
+.newsletter-form__field-wrapper .field__input:focus,
+.newsletter-form__field-wrapper .select__select:focus,
+.newsletter-form__field-wrapper .field input:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.newsletter-form__field-wrapper .field__input:focus,
+.newsletter-form__field-wrapper .field__input:not(:placeholder-shown),
+.newsletter-form__field-wrapper .field__input:-webkit-autofill {
+  padding: 1.5rem;
+}
+
+.newsletter-form__field-wrapper .field__input:focus ~ .field__label,
+.newsletter-form__field-wrapper .field__input:not(:placeholder-shown) ~ .field__label,
+.newsletter-form__field-wrapper .field__input:-webkit-autofill ~ .field__label {
+  font-size: 0.8rem;
+  top: 0.5em;
+  letter-spacing: 0.04rem;
+}
+
+.newsletter__image {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.newsletter__image img {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  height: 100%;
+  width: auto;
+}
+
+@media screen and (min-width: 990px) {
+  .newsletter__image {
+    height: 200px;
+  }
+}

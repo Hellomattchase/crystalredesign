@@ -1,0 +1,66 @@
+.rte::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.rte h1,
+.rte h2,
+.rte h3,
+.rte h4,
+.rte h5,
+.rte h6 {
+  margin-block: 2rem;
+}
+.rte h3, .rte .h3 {
+  font-size: calc(var(--font-heading-scale) * 2.4rem);
+}
+@media screen and (min-width: 750px) {
+  .rte h3, .rte .h3 {
+    font-size: calc(var(--font-heading-scale) * 2.5rem);
+  }
+}
+.rte > p:first-child {
+  margin-top: 0;
+}
+.rte > p:last-child {
+  margin-bottom: 0;
+}
+.rte table {
+  table-layout: fixed;
+}
+@media screen and (min-width: 750px) {
+  .rte table td {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+}
+.rte img {
+  height: auto;
+  max-width: 100%;
+}
+.rte ul, .rte ol {
+  padding-left: 2rem;
+}
+.rte li {
+  list-style: inherit;
+}
+.rte li:last-child {
+  margin-bottom: 0;
+}
+.rte a {
+  color: rgba(var(--color-link));
+  text-underline-offset: 0.3rem;
+  text-decoration-thickness: 0.1rem;
+  transition: var(--duration-short) ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .rte a:hover {
+    color: rgb(var(--color-link));
+  }
+}
+.rte blockquote {
+  display: inline-flex;
+}
+.rte blockquote > * {
+  margin: -0.5rem 0 -0.5rem 0;
+}

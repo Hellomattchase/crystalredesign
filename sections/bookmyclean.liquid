@@ -1,0 +1,195 @@
+{% comment %}
+  Crystal Clear Eco Home — Book My Clean Section
+  Focuses on easy booking, eco-friendly cleans, and best-in-class pricing.
+{% endcomment %}
+
+<div id="book-section">
+  <div class="eco-bg" aria-hidden="true"></div>
+  <div class="eco-overlay" aria-hidden="true"></div>
+
+  <main class="eco-wrap">
+    <section class="eco-section eco-section--hero">
+      <div class="eco-section__header">
+        <h1 class="eco-title">Book Your Clean Today</h1>
+        <p class="eco-lead">
+          Get the cleanest clean in town with our non toxic cleaning products. We offer the best-priced eco friendly house cleaning service, ensuring a healthy home and a healthy planet.
+        </p>
+      </div>
+    </section>
+
+    <section class="eco-section">
+      <h2 class="eco-subtitle">Safer, Simpler, Smarter Cleaning</h2>
+      <div class="eco-grid">
+        
+        <article class="eco-card">
+          <h3 class="eco-card__title">Best-Priced Eco Cleans</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>Get the most affordable sustainable cleaning service in your city.</p></li>
+            <li><span class="eco-dot"></span><p>Transparent pricing with no hidden fees or surcharges.</p></li>
+          </ul>
+        </article>
+
+        <article class="eco-card">
+          <h3 class="eco-card__title">Total Booking Control</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>Easily book a clean with our simple, autonomous system.</p></li>
+            <li><span class="eco-dot"></span><p>Reschedule or adjust your service from your mobile device.</p></li>
+          </ul>
+        </article>
+
+        <article class="eco-card">
+          <h3 class="eco-card__title">The Safer Choice</h3>
+          <ul class="eco-list">
+            <li><span class="eco-dot"></span><p>We use plant-based, non toxic cleaning products.</p></li>
+            <li><span class="eco-dot"></span><p>Our solutions are safe for families, pets, and the planet.</p></li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="eco-section eco-section--cta">
+      <div class="eco-section__header">
+        <h2 class="eco-subtitle">Ready for a healthier home?</h2>
+        <div style="margin-top: 2rem;">
+          <a href="#" class="btn">Book Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<style>
+:root {
+  --color-main: #49633e;
+  --color-glass: rgba(255, 255, 255, 0.1);
+  --color-text: #f8f8f8;
+  --color-text-dim: #e0e0e0;
+  --font-sans: 'Helvetica Neue', system-ui, sans-serif;
+  /* Image Variable */
+  --bg-url: url('https://cdn.shopify.com/s/files/1/0633/0771/0629/files/sustainable_investing_7ae44961-fadb-4b8b-b03a-6cf23f71686e.jpg?v=1773031193');
+}
+
+#book-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(60px, 10vw, 120px) 5%;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Image Handling */
+.eco-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--bg-url);
+  background-size: cover;
+  background-position: center;
+  /* Optional: background-attachment: fixed; for a parallax effect */
+}
+
+.eco-wrap {
+  width: 100%;
+  max-width: 1100px;
+  text-align: center;
+}
+
+/* Typography */
+.eco-title, .eco-subtitle, .eco-card__title {
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+
+.eco-title { font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: 1rem; }
+.eco-subtitle { font-size: clamp(1.5rem, 4vw, 2.5rem); margin: 2rem 0; }
+
+.eco-lead {
+  color: #0d0d0d;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.6;
+}
+
+/* Grid & Glass Cards */
+.eco-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-top: 3rem;
+}
+
+.eco-card {
+  background: var(--color-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  padding: 2.5rem 1.5rem;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.eco-card:hover { transform: translateY(-8px); }
+
+.eco-card__title { font-size: 1.25rem; margin-bottom: 1rem; }
+
+.eco-list { list-style: none; padding: 0; margin: 0; }
+.eco-list li { 
+  display: flex; 
+  gap: 12px; 
+  margin-bottom: 12px; 
+  color: var(--color-text-dim); 
+  font-size: 0.95rem;
+}
+
+.eco-dot {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+/* Button */
+.btn {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: var(--color-main);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: #5a7a4d;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Book My Clean",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Book My Clean"
+    }
+  ]
+}
+{% endschema %}

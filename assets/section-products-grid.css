@@ -1,0 +1,12 @@
+.products-grid__button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+}
+.products-grid .collection-wrapper {
+  border: none;
+}
+.products-grid__products {
+  display: flex;
+  flex-direction: column;
+}

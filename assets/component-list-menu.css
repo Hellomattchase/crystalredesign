@@ -1,0 +1,43 @@
+.list-menu--right {
+  right: 0;
+}
+
+.list-menu--disclosure {
+  position: absolute;
+  left: 1.5rem;
+  min-width: 100%;
+  width: 27rem;
+  background-color: rgb(var(--color-background));
+}
+
+.list-menu--disclosure .list-menu--disclosure {
+  left: 100%;
+  top: -2.7rem;
+}
+
+.list-menu--disclosure .list-menu--disclosure:before {
+  content: "";
+  position: absolute;
+  height: calc(100% - 2.7rem);
+  width: 0.1rem;
+  background-color: rgba(var(--color-foreground), 0.2);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+.list-menu--disclosure:focus {
+  outline: none;
+}
+
+.list-menu__item--active {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.list-menu--disclosure.localization-selector {
+  max-height: 18rem;
+  overflow: auto;
+  width: 10rem;
+  padding: 0.5rem;
+}

@@ -1,0 +1,27 @@
+<style type = "text/css">
+	.template-404 .title + * {
+		margin-top: 1rem;
+	}
+
+	@media screen and (min-width: 750px) {
+		.template-404 .title + * {
+			margin-top: 2rem;
+		}
+	}
+</style>
+
+<div class = "template-404 container  center">
+	<div class = "page-header">
+		<div class = "page-header__inner">
+			<p>
+				{{ 'templates.404.subtext' | t }}
+			</p>
+			<h1 class = "main-page-title page-title title--page">
+				{{ 'templates.404.title' | t }}
+			</h1>
+		</div>
+	</div>
+	<a href = "{{ routes.all_products_collection_url }}" class = "link body-large">
+		{{ 'general.continue_shopping' | t }}
+	</a>
+</div>

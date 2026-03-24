@@ -1,0 +1,171 @@
+{{ 'twentytwenty.css' | asset_url | stylesheet_tag }}
+{{ 'section-compare.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'jquery.event.move.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'jquery.twentytwenty.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'compare.js' | asset_url }}" defer="defer"></script>
+
+<section class="compare">
+  <div class="container">
+    <div class="border-wrapper {% if section.settings.border_top %}border-wrapper--top{% endif %} {% if section.settings.border_bottom %}border-wrapper--bottom{% endif %}">
+      <div class="compare__box">
+        {%- if section.settings.heading != blank
+          or section.settings.title != blank
+          or section.settings.text != blank
+          or section.settings.show_button
+          and section.settings.button_label != blank
+        -%}
+          <div class="compare__content">
+            {%- if section.settings.heading != blank -%}
+              <div class="compare__subtitle subtitle">
+                {{ section.settings.heading }}
+              </div>
+            {%- endif -%}
+            {%- if section.settings.title != blank -%}
+              <h2 class="compare__title">{{ section.settings.title }}</h2>
+            {%- endif -%}
+
+            {%- if section.settings.text != blank -%}
+              <div class="compare__description">
+                <p class="compare__text">{{ section.settings.text }}</p>
+              </div>
+            {%- endif -%}
+
+            {% if section.settings.show_button and section.settings.button_label != blank -%}
+              <a
+                {% if section.settings.button_link.url != blank %}
+                  href="{{ section.settings.button_link }}"
+                {% endif %}
+                class="button compare__button button--arrow button--{{ section.settings.button_style }}"
+                {% if section.settings.button_link.url == blank %}
+                  aria-disabled="true"
+                {% endif %}
+              >
+                <span>{{ section.settings.button_label | escape }}</span> {% render 'icon-button-arrow' %}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="compare__slide">
+          {%- if section.settings.image_before != blank and section.settings.image_after != blank -%}
+            <div class="twentytwenty-wrapper twentytwenty-horizontal">
+              <div class="twentytwenty-container">
+                {{
+                  section.settings.image_before
+                  | image_url: width: 1790
+                  | image_tag: loading: 'lazy', widths: '553, 895, 1790'
+                }}
+                {{
+                  section.settings.image_after
+                  | image_url: width: 1790
+                  | image_tag: loading: 'lazy', widths: '553, 895, 1790'
+                }}
+              </div>
+            </div>
+          {%- else -%}
+            <div class="compare__default">
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+              {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "t:sections.compare-block.name",
+  "tag": "section",
+  "class": "section-compare spaced-section",
+  "enabled_on": {
+    "templates": ["*"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "t:sections.compare-block.settings.heading.default",
+      "label": "t:sections.compare-block.settings.heading.label"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "default": "t:sections.compare-block.settings.title.default",
+      "label": "t:sections.compare-block.settings.title.label"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "default": "t:sections.compare-block.settings.text.default",
+      "label": "t:sections.compare-block.settings.text.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.button.header_button.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "default": true,
+      "label": "t:sections.all.button.button_show.label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:sections.all.button.button_style.options__1.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.all.button.button_style.options__2.label"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.all.button.button_style.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "t:sections.compare-block.settings.button_label.default",
+      "label": "t:sections.all.button.button_label.label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:sections.all.button.button_link.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_before",
+      "label": "t:sections.compare-block.settings.image_before.label",
+      "info": "t:sections.compare-block.settings.image_before.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_after",
+      "label": "t:sections.compare-block.settings.image_after.label",
+      "info": "t:sections.compare-block.settings.image_before.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_top",
+      "default": false,
+      "label": "t:sections.compare-block.settings.border_top.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "border_bottom",
+      "default": false,
+      "label": "t:sections.compare-block.settings.border_bottom.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.compare-block.presets.name"
+    }
+  ]
+}
+{% endschema %}

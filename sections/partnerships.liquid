@@ -1,0 +1,203 @@
+<section class="eco-section">
+  <div class="eco-section__header">
+    <h2 class="eco-subtitle">Our Impactful Partnerships</h2>
+    <p class="eco-lead">
+      Our commitment to the planet and your well-being is at the core of everything we do. Through strategic partnerships, we ensure every aspect of our service is both high-quality and responsible.
+    </p>
+  </div>
+  <div class="eco-grid eco-grid--2">
+    <article class="eco-card">
+      <h3 class="eco-card__title">Plant with Purpose</h3>
+      <ul class="eco-list">
+        <li><span class="eco-dot"></span><p>A mission-aligned nonprofit that fights poverty and environmental damage.</p></li>
+        <li><span class="eco-dot"></span><p>For every cleaning service we perform, a tree is planted.</p></li>
+        <li><span class="eco-dot"></span><p>We're building a sustainable future, one home and one tree at a time.</p></li>
+      </ul>
+    </article>
+    
+    <article class="eco-card">
+      <h3 class="eco-card__title">Flowcheer</h3>
+      <ul class="eco-list">
+        <li><span class="eco-dot"></span><p>Our exclusive partnership for 100% plant-based cleaning solutions.</p></li>
+        <li><span class="eco-dot"></span><p>Their antibacterial formulas are safe for your home, family, and pets.</p></li>
+        <li><span class="eco-dot"></span><p>No harsh chemicals or toxins, ever.</p></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<style>
+/* Eco Glassmorphism Style */
+@charset "UTF-8";
+
+/* Color custom properties */
+:root {
+  --color-base-background: 186, 192, 149;
+  --color-foreground: #f8f8f8;
+  --color-foreground-title: #f8f8f8;
+  --color-foreground-secondary: #e0e0e0;
+  --color-link: #49633e;
+  --color-button: #49633e;
+  --color-button-text: #fff;
+  --color-badge-background: #49633e;
+  --color-badge-border: #49633e;
+  --color-text-light: #eaf5e3;
+  --color-text-dark: #0d0d0d;
+}
+
+/* Text and section styling */
+.eco-section {
+  background-color: rgba(13, 13, 13, 0.75);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  text-align: center;
+}
+
+.eco-section:first-child {
+  margin-top: 0;
+}
+
+/* Headings and text colors */
+.eco-title, .eco-subtitle, .eco-card__title, .eco-lead, .eco-list p {
+  color: #f8f8f8;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: none;
+  margin: 0;
+}
+
+.eco-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(28px, 5vw, 48px);
+}
+
+.eco-subtitle {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  font-size: clamp(22px, 3.5vw, 36px);
+}
+
+.eco-card__title {
+  font-weight: 900;
+  font-size: clamp(18px, 2.5vw, 24px);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.eco-lead {
+  max-width: 900px;
+  margin: 1rem auto 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* Badges */
+.eco-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--color-badge-background);
+  color: var(--color-button-text);
+}
+
+/* Grid for cards */
+.eco-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.eco-grid--3 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .eco-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.eco-grid--2 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .eco-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Cards (now transparent) */
+.eco-card {
+  background: transparent;
+  border: none;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+
+.eco-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Lists and dots */
+.eco-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  color: #e0e0e0;
+}
+
+.eco-list li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.eco-list p {
+  margin: 0;
+  color: var(--color-foreground-secondary);
+}
+
+.eco-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #f8f8f8;
+  margin-top: 0.5rem;
+  animation: pulse-light 2s ease-out infinite;
+}
+
+@keyframes pulse-light {
+  0% { box-shadow: 0 0 0 0 rgba(248, 248, 248, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(248, 248, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(248, 248, 248, 0); }
+}
+</style>
+{% schema %}
+  {
+    "name": "Partnerships",
+    "tag": "section",
+    "class": "section",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Partnerships"
+      }
+    ]
+  }
+{% endschema %}

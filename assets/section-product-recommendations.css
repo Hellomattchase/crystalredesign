@@ -1,0 +1,23 @@
+.product-recommendations {
+  display: block;
+}
+
+.product-recommendations__item {
+  padding-top: 4rem;
+  border-top: 0.3rem solid rgb(var(--color-background-section-border));
+}
+
+.product-recommendations__list {
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.product-recommendations__heading {
+  margin: 0;
+  margin-bottom: 3rem;
+}
+
+.product-recommendations .grid__item {
+  padding-bottom: 0;
+}

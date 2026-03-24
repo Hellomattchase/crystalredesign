@@ -1,0 +1,120 @@
+<div class="container color-inverse">
+  <div class="mega-menu__wrapper">
+    {% for block in blocks %}
+      {% assign mega_menu_trigger = block.settings.mega_menu_trigger | handle | strip %}
+      {% assign list_columns = block.settings.list_columns %}
+			{% if link.handle == mega_menu_trigger %}
+				{% if block.settings.mega_menu_header != blank %}
+					<div class="mega-menu__list-heading subtitle">
+						{{ block.settings.mega_menu_header }}
+					</div>
+				{% endif %}
+			{%- endif -%}
+    {% endfor %}
+
+    <ul class="mega-menu__list list-unstyled focus-inset mega-menu__list--{{ list_columns }}">
+      {% for link in link.links %}
+        <li>
+          <a
+            href="{{ link.url }}"
+            class="mega-menu__link header__menu-item list-menu__item link focus-inset caption-large{% if link.current %} header__menu-item--active{% endif %}"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            <span>
+              {{ link.title | escape }}
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% for block in blocks %}
+    {% assign mega_menu_trigger = block.settings.mega_menu_trigger | handle | strip %}
+    {% if link.handle == mega_menu_trigger %}
+      <ul class="mega-menu__collections list-unstyled">
+        {%- for collection in block.settings.select_collections -%}
+          <li class="mega-menu__collections-card">
+            <div class="card-wrapper">
+              {% liquid
+                if collection.id != collection_individual_id
+                  case block.settings.image
+                    when 'product_hover'
+                      assign image_first = collection.products[0].images[1]
+                      assign image_second = collection.products[0].images[0]
+                      assign image_third = collection.featured_image
+                    when 'product'
+                      assign image_first = collection.products[0].images[0]
+                      assign image_second = collection.featured_image
+                      assign image_third = collection.products[0].images[1]
+                    when 'collection'
+                      assign image_first = collection.featured_image
+                      assign image_second = collection.products[0].images[1]
+                      assign image_third = collection.products[0].images[0]
+                  endcase
+                endif
+              %}
+
+              {% if collection.id != collection_individual_id %}
+                {% if image_first != blank %}
+                  {% assign collection_product_image = image_first %}
+                {% elsif image_second != blank %}
+                  {% assign collection_product_image = image_second %}
+                {% else %}
+                  {% assign collection_product_image = image_third %}
+                {% endif %}
+              {% else %}
+                {% assign collection_product_image = collection.featured_image %}
+              {% endif %}
+
+              <span
+                class="image-ratio image-ratio--landscape"
+              ></span>
+
+              {%- if collection_product_image != blank -%}
+                <img
+                  srcset="
+                    {%- if collection_product_image.width >= 165 -%}{{ collection_product_image | img_url: '165x' }} 165w,{%- endif -%}
+                    {%- if collection_product_image.width >= 360 -%}{{ collection_product_image | img_url: '360x' }} 360w,{%- endif -%}
+                    {%- if collection_product_image.width >= 533 -%}{{ collection_product_image | img_url: '533x' }} 533w,{%- endif -%}
+                    {%- if collection_product_image.width >= 720 -%}{{ collection_product_image | img_url: '720x' }} 720w,{%- endif -%}
+                    {%- if collection_product_image.width >= 940 -%}{{ collection_product_image | img_url: '940x' }} 940w,{%- endif -%}
+                    {%- if collection_product_image.width >= 1066 -%}{{ collection_product_image | img_url: '1066x' }} 1066w{%- endif -%},
+                    {%- if collection_product_image.width >= 1100 -%}{{ collection_product_image | img_url: '1100x' }} 1100w,{%- endif -%}
+                    {%- if collection_product_image.width >= 1290 -%}{{ collection_product_image | img_url: '1290x' }} 1290w,{%- endif -%}
+                    {%- if collection_product_image.width >= 1440 -%}{{ collection_product_image | img_url: '1440x' }} 1440w,{%- endif -%}
+                    {%- if collection_product_image.width >= 1600 -%}{{ collection_product_image | img_url: '1600x' }} 1600w,{%- endif -%}
+                    {%- if collection_product_image.width >= 1920 -%}{{ collection_product_image | img_url: '1920x' }} 1920w{%- endif -%}
+                  "
+                  src="{{ collection_product_image | img_url: '533x' }}"
+                  sizes="(min-width: 1100px) 1290px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+                  alt="{{ collection_product_image.alt | escape }}"
+                  loading="lazy"
+                  class="card-wrapper__image motion-reduce img-scale"
+                  width="{{ collection_product_image.width }}"
+                  height="{{ collection_product_image.height }}"
+                  {%- if block.settings.image_fit == 'contain' -%}
+                    style="object-fit: contain;"
+                  {%- endif -%}
+                  {%- if block.settings.image_fit == 'cover' -%}
+                    style="object-fit: cover;"
+                  {%- endif -%}
+                >
+              {% endif %}
+            </div>
+            <h3 class="collections-grid__title subtitle color-background-1">
+              <a href="{{ collection.url | default: '#' }}" class="header__menu-item list-menu__item link focus-inset">
+                <span>
+                  <span title="{{ collection.title | escape }}">{{ collection.title | escape }}</span>
+                </span>
+              </a>
+            </h3>
+            <a href="{{ collection.url | default: '#' }}" class="mega-menu__collections-link"></a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {% endif %}
+  {% endfor %}
+</div>
+

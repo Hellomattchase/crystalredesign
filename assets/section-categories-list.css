@@ -1,0 +1,122 @@
+.categories-list__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: auto;
+  padding: 3rem;
+}
+
+.categories-list__wrapper .subtitle {
+  position: relative;
+  z-index: 1;
+}
+
+.categories-list__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 750px;
+  max-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.categories-list__title {
+  position: relative;
+  margin: 0;
+  font-size: calc(var(--font-heading-scale) * 2.4rem);
+}
+
+.categories-list__title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  width: 0;
+  height: 0.2rem;
+  background: rgb(var(--color-foreground));
+  transition: 0.25s;
+}
+
+.categories-list__link {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  padding: 1rem 0;
+  z-index: 1;
+}
+
+.categories-list__item:not(:last-child) a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+  margin-right: 2rem;
+}
+
+.categories-list__item:not(:last-child) a:after {
+  content: "";
+  position: absolute;
+  right: -0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: rgba(var(--color-foreground), 0.5);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .categories-list__item:hover .categories-list__title:before {
+    width: 100%;
+  }
+}
+.categories-list__media img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  height: auto;
+  width: 150px;
+}
+
+.categories-list__media {
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  opacity: 0;
+  transform: translateY(-50%) translateX(-50%);
+  transition: opacity 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), visibility 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+  visibility: hidden;
+}
+@media (max-width: 420px) {
+  .categories-list__media {
+    display: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .categories-list__link:hover + .categories-list__media {
+    transform: translateY(-45%) translateX(-45%);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+@media only screen and (min-width: 990px) {
+  .categories-list__wrapper {
+    padding: 5rem;
+    min-height: 47rem;
+  }
+  .categories-list__link {
+    padding: 1.5rem 0;
+  }
+  .categories-list__title {
+    font-size: calc(var(--font-heading-scale) * 4.5rem);
+  }
+  .categories-list__media img {
+    width: 300px;
+  }
+}
